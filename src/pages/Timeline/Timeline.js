@@ -1,26 +1,40 @@
+import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
-import { FlatList, Image, StyleSheet, View } from 'react-native';
-import { Appbar, Colors } from 'react-native-paper';
+import {
+  Dimensions,
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import PostCard from '../../components/PostCard';
 import StoryBoard from './StoryBoard';
 
 const Timeline = () => {
   return (
     <View style={{ flex: 1 }}>
-      <Appbar.Header style={styles.header}>
-        <Image
-          source={require('../../../assets/text-logo.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        <Appbar.Content />
+      <View style={styles.header}>
+        <View style={styles.headerLeft}>
+          <Image
+            source={require('../../../assets/text-logo.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+        </View>
+        <View style={styles.headerRight}>
+          <TouchableOpacity style={styles.headerAction}>
+            <AntDesign name="plussquareo" size={24} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.headerAction}>
+            <AntDesign name="hearto" size={24} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.headerAction}>
+            <AntDesign name="message1" size={24} />
+          </TouchableOpacity>
+        </View>
+      </View>
 
-        <Appbar.Action icon="plus-box-outline" color={Colors.black} />
-        <Appbar.Action icon="heart-outline" color={Colors.black} />
-        <Appbar.Action icon="chat-outline" color={Colors.black} />
-      </Appbar.Header>
-
-      {/* timeline */}
       <FlatList
         ListHeaderComponent={<StoryBoard />}
         data={[...new Array(10).keys()].map((item) => item + 1)}
@@ -51,9 +65,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    padding: 14,
+    height: 64,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   logo: {
-    height: 44,
-    width: '30%',
+    height: 32,
+    width: Dimensions.get('screen').width / 4,
+  },
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerAction: {
+    marginLeft: 20,
   },
 });

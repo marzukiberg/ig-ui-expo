@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import { Colors } from 'react-native-paper';
+import Config from '../../utils/Config';
 
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 const StoryBoard = () => {
@@ -22,9 +22,10 @@ const StoryBoard = () => {
           <Image
             style={styles.storyImage}
             source={{
-              uri: `https://randomuser.me/api/portraits/men/${(
-                Math.random() * 100
-              ).toFixed(0)}.jpg`,
+              uri: `${
+                Config.BASE_URL_PROFILE_IMG_MEN +
+                (Math.random() * 100).toFixed(0)
+              }.jpg`,
             }}
             resizeMode="cover"
           />
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     marginTop: 12,
     borderWidth: 2,
-    borderColor: Colors.pink300,
+    borderColor: '#FF006E',
   },
   storyUsername: {
     fontSize: 12,

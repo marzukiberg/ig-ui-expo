@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Colors } from 'react-native-paper';
 
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 
@@ -73,7 +72,7 @@ const PostCard = ({ profileUri, postUri }) => {
                 size={24}
                 name={liked ? 'heart' : 'heart-outline'}
                 style={styles.cardActionIcon}
-                color={liked ? Colors.pink500 : 'black'}
+                color={liked ? '#FF006E' : 'black'}
               />
             </TouchableOpacity>
             <TouchableOpacity style={styles.cardAction}>
